@@ -1,0 +1,223 @@
+.myquiz-page {
+  min-height: 100vh;
+  background: #0f0f17;
+  color: #e2e2f0;
+  padding: 24px;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.myquiz-page--contained {
+  min-height: auto;
+  background: transparent;
+  padding: 0;
+}
+
+.myquiz-banner {
+  background: linear-gradient(135deg, #1e1640 0%, #2a1f5a 50%, #1a2050 100%);
+  border: 1px solid #2e2660;
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.myquiz-banner__title {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.myquiz-banner__subtitle {
+  margin: 0;
+  color: #a0a0c0;
+  font-size: 0.9rem;
+}
+
+.myquiz-banner__badge {
+  min-width: 100px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myquiz-banner__badge-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.myquiz-banner__badge-label {
+  font-size: 0.72rem;
+  color: #a0a0c0;
+}
+
+.myquiz-card {
+  background: #13131f;
+  border: 1px solid #1e1e30;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.myquiz-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.myquiz-card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e2f0;
+}
+
+.myquiz-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid #a78bfa66;
+  background: #a78bfa22;
+  color: #c4b5fd;
+}
+
+.myquiz-chip--mock {
+  border-color: #60a5fa66;
+  background: #60a5fa22;
+  color: #93c5fd;
+}
+
+.myquiz-join-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.myquiz-join-form__input {
+  flex: 1 1 260px;
+  background: #0f0f17;
+  border: 1px solid #2a2a3e;
+  border-radius: 10px;
+  padding: 11px 12px;
+  color: #e2e2f0;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.myquiz-join-form__input:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 2px #a78bfa22;
+}
+
+.myquiz-join-form__button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 11px 16px;
+  cursor: pointer;
+}
+
+.myquiz-join-form__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.myquiz-feedback,
+.myquiz-muted {
+  margin: 10px 0 0;
+  color: #a0a0c0;
+  font-size: 0.84rem;
+}
+
+.myquiz-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.myquiz-item {
+  background: #0f0f17;
+  border: 1px solid #1e1e30;
+  border-radius: 12px;
+  padding: 14px;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.myquiz-item:hover {
+  transform: translateY(-2px);
+  border-color: #a78bfa55;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.26);
+}
+
+.myquiz-item__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.myquiz-item__tag {
+  border: 1px solid #c0622a66;
+  background: #c0622a22;
+  color: #f4a170;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.myquiz-item__status {
+  border: 1px solid #34d39955;
+  background: #34d39922;
+  color: #34d399;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.myquiz-item__title {
+  margin: 0 0 8px;
+  font-size: 0.98rem;
+  color: #fff;
+}
+
+.myquiz-item__meta {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  color: #8f8fa8;
+}
+
+.myquiz-item__score {
+  margin: 8px 0 0;
+  color: #c4b5fd;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .myquiz-page {
+    padding: 14px;
+  }
+
+  .myquiz-banner {
+    padding: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

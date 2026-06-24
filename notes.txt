@@ -1,0 +1,52 @@
+(TODOS new)
+
+1. Create Quizz (teacher) [Ayush]
+    - Form
+        - Title
+        - Tags
+        - Questions
+            - Question Line
+            - Options (4)
+            - Correct Option
+        - TimeLimit
+    OR
+    - Generate Quize
+        - Tags
+        - Easy/medium/hard (difficulty)
+        - TimeLimit
+    
+    - Pdf Upload (Sno, email, RollNo) -> pdf (read) -> entries -> db (backseat)
+        
+    - Create
+        - Link to join that quiz / Code
+
+2. Quizz (student) [Rohan]
+    - All quizes show
+        - Past quizes (show results)
+        - Future Quizes (join option)
+    - Mech to join a quiz
+        - Here while joining the roll no and email is checked with the pdf that is associated with that quiz
+
+3. Integrate the QuizArena (Rohan ne banaya tha) with the actual Quiz [Rohan]
+
+4. When the students SignUp's they are asked for their RollNo. [Bhavya]
+
+5. Individual Past Quiz details (/username/quizId) [Payal] 
+    - Student's Scores
+    - Performace Data (question wise) (backseat)
+    - Also has the option that shows the question in that Quiz (And has a fav Mechanism)
+
+6. Teacher's fav list [Payal]
+
+7. Integrate safty Mechanism (tab switching vagera) [Mudit]
+    - Disable copy, ss and tab switch (check possibility) (mudit)
+    - Mechanism to detect unauthorized student
+
+8. Connect with real backend [Dev]
+
+(Misc)
+10. Coin / exp Mechanism (backseat)
+
+
+3 -> research + doc (Dev, Mudit, Payal)
+3 -> code (Bhav, Ayush, Rohan)

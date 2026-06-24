@@ -1,0 +1,703 @@
+\documentclass[12pt,a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{listings}
+\usepackage{pifont}   % for \ding checkmarks
+\usepackage{mdframed}
+\usepackage{setspace}
+\usepackage{tocloft}
+\usepackage{float}
+\usepackage{caption}
+
+% ── Page geometry ─────────────────────────────────────────────────────────────
+\geometry{
+  top=2.5cm, bottom=2.5cm,
+  left=2.5cm, right=2.5cm
+}
+
+% ── Colours ───────────────────────────────────────────────────────────────────
+\definecolor{primary}{RGB}{37,99,235}      % blue-600
+\definecolor{accent}{RGB}{16,185,129}      % emerald-500
+\definecolor{lightgray}{RGB}{245,245,245}
+\definecolor{darkgray}{RGB}{55,65,81}
+\definecolor{codebg}{RGB}{30,30,30}
+\definecolor{codegreen}{RGB}{166,226,46}
+
+% ── Hyperref setup ────────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  linkcolor=primary,
+  urlcolor=primary,
+  citecolor=primary,
+  pdftitle={QuizPod -- Progress-1 Documentation},
+  pdfauthor={Dev Aggarwal et al.}
+}
+
+% ── Section title formatting ──────────────────────────────────────────────────
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {\thesection.}{0.5em}{}[\vspace{-0.3em}\textcolor{primary}{\rule{\linewidth}{1.5pt}}]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{darkgray}}
+  {\thesubsection}{0.5em}{}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{darkgray}}
+  {\thesubsubsection}{0.5em}{}
+
+% ── Header / footer ───────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{darkgray}{QuizPod --- Web Technology Progress-1}}
+\fancyhead[R]{\small\textcolor{darkgray}{March 2026}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ── Code listing style ────────────────────────────────────────────────────────
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{lightgray},
+  frame=single,
+  rulecolor=\color{gray!40},
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2,
+}
+
+% ── Convenience commands ──────────────────────────────────────────────────────
+\newcommand{\yes}{\textcolor{accent}{\ding{51}}}   % tick
+\newcommand{\no}{\textcolor{red}{\ding{55}}}        % cross
+
+% ── Highlighted box ───────────────────────────────────────────────────────────
+\newmdenv[
+  backgroundcolor=blue!5,
+  linecolor=primary,
+  linewidth=1.5pt,
+  roundcorner=4pt,
+  skipabove=8pt,skipbelow=8pt,
+  innerleftmargin=10pt,innerrightmargin=10pt,
+  innertopmargin=8pt,innerbottommargin=8pt
+]{infobox}
+
+\graphicspath{{./}}
+
+% ─────────────────────────────────────────────────────────────────────────────
+%  TITLE PAGE
+% ─────────────────────────────────────────────────────────────────────────────
+\title{
+  \vspace{-1cm}
+  {\LARGE\bfseries\color{primary} QuizPod}\\[0.4em]
+  {\large An Intelligent Quiz \& Learning Platform}\\[0.8em]
+  {\normalsize\color{darkgray} Web Technology --- Progress-1 Documentation}
+}
+\author{
+  \begin{tabular}{lr}
+    \textbf{Name} & \textbf{Roll No.} \\[0.4em]
+    Ayush Chauhan  & 2023UIT3134 \\
+    Dev Aggarwal   & 2023UIT3136 \\
+    Bhavya Agrawal & 2023UIT3138 \\
+    Rohan Singh    & 2023UIT3139 \\
+    Payal          & 2023UIT3142 \\
+    Mudit          & 2023UIT3149 \\
+  \end{tabular}\\[0.6em]
+  {\small Team Size: 6 Members}
+}
+\date{March 2026}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{infobox}
+  \textbf{Subject:} Web Technology \hfill
+  \textbf{Evaluation:} Progress-1\\
+  \textbf{GitHub:} \href{https://github.com/DevAggarwal03/WebTech_Project}{\texttt{DevAggarwal03/WebTech\_Project}}
+\end{infobox}
+
+\vspace{0.5cm}
+\tableofcontents
+\newpage
+
+% =============================================================================
+\section{Topic of the Project}
+% =============================================================================
+
+\subsection{Problem Statement and Theme}
+
+Existing online quiz and learning platforms fail to genuinely optimise for
+\emph{learning outcomes}. They prioritise engagement metrics (leaderboards,
+speed-based scoring) or administrative convenience, while students receive
+shallow feedback, no adaptive learning, and teachers get minimal actionable
+analytics.
+
+\textbf{Core Problem Areas:}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Shallow feedback} --- Platforms show scores but never explain
+        \emph{why} an answer was wrong or \emph{what to study next}.
+  \item \textbf{No adaptive difficulty} --- Every student receives the same
+        quiz regardless of skill level.
+  \item \textbf{Academic integrity gaps} --- Tab-switching, answer-sharing, and
+        unauthorised quiz access are poorly addressed.
+  \item \textbf{Unauthorised access} --- Students not enrolled in a specific
+        class can freely join if they obtain the access code, compromising quiz
+        integrity.
+  \item \textbf{Paywall exclusion} --- Analytics, student tracking, and rich
+        question types are locked behind expensive paid tiers.
+  \item \textbf{No collaborative learning} --- Quizzes are always competitive;
+        team-based learning modes are absent.
+\end{itemize}
+
+\textbf{Our Solution --- QuizPod:}\\
+A web-based quiz platform that places learning outcomes at the centre. It
+provides rich feedback, teacher-controlled classrooms with unauthorised-student
+detection, detailed performance analytics, and lightweight engagement elements
+like XP and badges --- all for free.
+
+\begin{infobox}
+  \textit{``The quiz platform that actually helps students learn, not just
+  score --- and actually helps teachers teach, not just grade.''}
+\end{infobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Research on Existing Platforms}
+
+We conducted detailed research on six major quiz/assessment platforms to
+identify gaps and opportunities.
+
+\begin{table}[H]
+  \centering
+  \caption{Analysis of Existing Quiz Platforms}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l l l X @{}}
+    \toprule
+    \textbf{Platform} & \textbf{Primary Strength} & \textbf{Core Audience} & \textbf{Key Shortcoming} \\
+    \midrule
+    Kahoot       & Gamified live quizzes    & K-12, higher ed   & Speed $>$ accuracy; free tier capped at 10 players \\
+    Quizlet      & Flashcards \& study modes & Students         & Key modes behind paywall; ad-heavy free tier \\
+    Google Forms & Simple form-based quizzes & General          & No native timer; easy misconfiguration exposes answers \\
+    Mentimeter   & Real-time polling        & Higher ed         & Only 2 free interactive slides; weak analytics \\
+    Socrative    & Formative live assessments & K-12 teachers   & Capped at 50 students; MCQ-only \\
+    Typeform     & Conversational form UX   & Business/HR       & Expensive per-response pricing; no auto-close \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsubsection{Universal Gaps Across All Platforms}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item No Adaptive Difficulty --- questions never adjust based on student performance.
+  \item Shallow Feedback --- most platforms show a score with no explanation.
+  \item No Spaced Repetition --- no intelligent review scheduling.
+  \item Weak Academic Integrity --- no lightweight anti-cheat mechanisms.
+  \item Paywalls block core features --- analytics, tracking, and rich types are premium-only.
+  \item No Collaborative Quizzing --- students always compete, never cooperate.
+  \item Poor Teacher Analytics --- class averages but not per-concept diagnosis.
+  \item Rich Content Limitations --- code, \LaTeX{}, diagrams not natively supported.
+  \item Fragmented Workflow --- quiz creation, sharing, and grading are spread across tools.
+  \item No Offline Mode --- all platforms require stable internet.
+\end{enumerate}
+
+\subsubsection{Research on Unauthorised Access Prevention}
+
+\begin{table}[H]
+  \centering
+  \caption{Access Control Mechanisms Across Platforms}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l l X @{}}
+    \toprule
+    \textbf{Platform} & \textbf{Access Mechanism} & \textbf{Gaps} \\
+    \midrule
+    Google Classroom & 6--8 char class code; domain restriction & Code can be shared/leaked; no approval step \\
+    Kahoot           & Temporary game PIN per session           & No persistent ``class'' concept \\
+    Quizizz          & Join code via joinmyquiz.com            & Code-based, no approval \\
+    Moodle           & Enrollment key, manual enrollment       & Powerful but complex for teachers \\
+    Canvas LMS       & SIS integration, self-enroll codes      & Institution-managed; limited teacher control \\
+    Edmodo           & Group code + teacher approval queue     & \yes Best approach --- but shut down in 2022 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\textbf{Key Insight:} Most platforms rely on \emph{security by obscurity} --- a
+shared code is the only gate. Codes get leaked via social media, there is no
+identity verification, and no teacher-approval step in popular quiz tools.
+Edmodo's approval-queue approach was the best but is no longer available.
+
+\textbf{Our three-part approach:}
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Teacher approval queue} --- students request to join; teachers approve/deny.
+  \item \textbf{Class roster matching} --- students enter their roll number, matched against a pre-uploaded list.
+  \item \textbf{Auto-expiring join codes} --- codes valid only for a limited time window.
+\end{enumerate}
+
+\begin{infobox}
+  This combination does not exist in any current lightweight quiz platform.
+\end{infobox}
+
+% =============================================================================
+\section{Structure of the Project with Technology Stack}
+% =============================================================================
+
+\subsection{Project Structure --- Pages and Sitemap}
+
+\begin{lstlisting}
+QuizPod Platform
+|
++-- Landing Page (/)
+|   +-- Hero section with tagline & CTA buttons (Sign Up / Join Quiz)
+|   +-- Feature cards (Practice Mode, Live Competitions, Track Progress)
+|   `-- Footer with social links
+|
++-- Authentication (/auth)
+|   +-- Role selection toggle (Student / Teacher)
+|   +-- Sign-up form (Name, Email, Password)
+|   `-- Animated binary-rain background
+|
++-- Student Dashboard (/student)
+|   +-- Navbar (Home, XP counter, Join Quiz, Logout)
+|   +-- Hero banner with stats (Rank, XP)
+|   +-- Badge showcase
+|   `-- Recent Quizzes grid (title, score, date, category)
+|
++-- Teacher Dashboard (/teacher)
+|   +-- Navbar (Home, Community, Create Quiz, Logout)
+|   +-- Hero banner with stats (Total Quizzes, Upcoming Quizzes)
+|   +-- Subject badges (Science, Math, English, Geography)
+|   `-- Recent Quizzes grid (title, subject, submissions, date)
+|
++-- Quiz Arena (/quiz/:id)
+|   +-- Navbar (brand, section name, theme toggle, countdown timer)
+|   +-- Question panel (text, MCQ radio options)
+|   +-- Navigation (Previous, Mark for Review, Next/Submit)
+|   +-- Status panel (colour-coded question grid)
+|   `-- Built-in calculator tool
+|
++-- Create Quiz (/teacher/create-quiz)
+|   `-- Quiz builder for teachers
+|
+`-- Create Classroom (/teacher/create-classroom)
+    `-- Classroom creation, join codes, roster, enrolment management
+\end{lstlisting}
+
+% ── Frontend screenshot placeholders ─────────────────────────────────────────
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.47\linewidth]{assets/landing.png}
+  \hfill
+  \includegraphics[width=0.47\linewidth]{assets/auth.png}
+  \caption{Frontend Screenshots --- Landing Page (left) and Authentication Page (right)}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.47\linewidth]{assets/studentDashboard.jpeg}
+  \hfill
+  \includegraphics[width=0.47\linewidth]{assets/TeacherDashboard.jpeg}
+  \caption{Frontend Screenshots --- Student Dashboard (left) and Teacher Dashboard (right)}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.47\linewidth]{assets/QuizArena.png}
+  \caption{Frontend Screenshot --- Quiz Arena}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Design Principles Applied in QuizPod}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l X @{}}
+    \toprule
+    \textbf{Principle} & \textbf{Application in QuizPod} \\
+    \midrule
+    Feedback-first, score-second    & Prioritise explaining wrong answers over raw scores \\
+    No public shaming               & Private leaderboards; personal stats on dashboard \\
+    Teacher time is precious        & Streamlined dashboard, at-a-glance stats \\
+    Mobile-first approach           & Responsive CSS for all screen sizes \\
+    Component-based architecture    & Each page is a self-contained React component with its own stylesheet \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\textbf{Design Topology:}
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Component-based architecture} using React --- modular, reusable UI components for consistency.
+  \item \textbf{Colour-coded status system} in Quiz Arena: \textcolor{accent}{green} = answered, \textcolor{orange}{yellow} = marked for review, \textcolor{gray}{grey} = not visited.
+  \item \textbf{Role-based interface separation} --- Student and Teacher dashboards are entirely different views with distinct layouts, stats, and actions.
+  \item \textbf{Consistent visual language} --- shared design tokens (colours, spacing, typography) across all pages.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\subsection{Ideation and Brainstorming Process}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Problem Identification Phase:} Each team member individually
+        used existing quiz platforms and documented pain points encountered as
+        students.
+
+  \item \textbf{Feature Brainstorming Sessions:} The team conducted multiple
+        brainstorming sessions over Google Meet using collaborative tools:
+        \begin{itemize}
+          \item \textbf{Excalidraw} --- for quick whiteboard-style sketching of
+                page layouts, user flows, and architecture diagrams.
+          \item \textbf{Figma} --- for higher-fidelity wireframes and component
+                design. Mockups of Landing Page, Dashboards, and Quiz Arena
+                were created to align the team before coding.
+        \end{itemize}
+
+  \item \textbf{Research Phase:} Formal research on six competing platforms to
+        identify market gaps, with a specific deep-dive on unauthorised access
+        prevention.
+
+  \item \textbf{Architecture Design:} Settled on a client-server architecture
+        with clear separation between student and teacher interfaces.
+\end{enumerate}
+
+\textbf{Prioritised Feature Backlog:}
+
+\begin{table}[H]
+  \centering
+  \caption{Feature Priority Classification}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l X @{}}
+    \toprule
+    \textbf{Priority} & \textbf{Features} \\
+    \midrule
+    High & Student \& Teacher Dashboards, Create Quiz, Create Classroom, AI-generated questions, anti-cheat module, unauthorised-student detection \\
+    Low  & Question tags, Mistake Book, detailed performance metrics, Coin/XP engagement mechanism \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\begin{infobox}
+  \textbf{Brainstorming Artifacts:} Excalidraw sketches, Figma wireframes, and
+  Google Meet session screenshots are available in the project repository
+  (\texttt{/assets/} folder) and can be provided on request.
+\end{infobox}
+
+% ── Brainstorming image placeholders ─────────────────────────────────────────
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.47\linewidth]{assets/excalidrawBrainStorm.png}
+  \hfill
+  \includegraphics[width=0.47\linewidth]{assets/figmaBrainstorm.png}
+  \caption{Brainstorming Artifacts --- Excalidraw sketch (left) and Figma wireframe (right)}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.47\linewidth]{assets/googleMeet.jpeg}
+  \caption{Team Brainstorming Session --- Google Meet}
+\end{figure}
+
+% -----------------------------------------------------------------------------
+\subsection{Technology Stack and Justification}
+
+\begin{table}[H]
+  \centering
+  \caption{Technology Stack with Justification}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l l l X @{}}
+    \toprule
+    \textbf{Layer} & \textbf{Technology} & \textbf{Version} & \textbf{Why This Choice?} \\
+    \midrule
+    Frontend Framework & React        & 19.x & Component-based architecture ideal for a multi-page app; rich ecosystem; team familiarity \\
+    Build Tool         & Vite         & 8.x  & Extremely fast dev server with HMR; near-instant rebuilds vs.\ Webpack \\
+    Styling            & Tailwind CSS + Vanilla CSS & --- & Utility-first classes for rapid styling; Vanilla CSS for complex component-specific styles \\
+    Backend Runtime    & Node.js      & LTS  & JavaScript across the full stack; non-blocking I/O suited for real-time quiz features \\
+    Linting            & ESLint       & 9.x  & Early bug detection; enforces consistent code style across 6 team members \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% -----------------------------------------------------------------------------
+\subsection{Deployment Plan}
+
+\begin{table}[H]
+  \centering
+  \caption{Live Deployment Plan}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l l X @{}}
+    \toprule
+    \textbf{Stage} & \textbf{Tool / Service} & \textbf{Details} \\
+    \midrule
+    Version Control     & Git + GitHub    & Repository at \texttt{DevAggarwal03/WebTech\_Project} \\
+    Frontend Hosting    & Vercel / Netlify & Free tier; automatic deployments from GitHub; global CDN \\
+    Backend Hosting     & Render / Railway & Free tier; Node.js support; auto-deploy from GitHub \\
+    Database            & MongoDB Atlas   & Free tier (512 MB); cloud-hosted; native JavaScript driver \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% -----------------------------------------------------------------------------
+\subsection{Data Flow Diagrams (DFD)}
+
+\subsubsection{Level 0 --- Context Diagram}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{assets/dfd0.png}
+  \caption{Level 0 DFD — Context Diagram}
+\end{figure}
+
+\subsubsection{Level 1 --- Major Processes}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{assets/dfd1.png}
+  \caption{Level 1 DFD — Major Processes}
+\end{figure}
+
+% =============================================================================
+\section{Implementation}
+% =============================================================================
+
+\subsection{Current Implementation Status ($\approx$50\%)}
+
+The frontend of the application has been implemented with the following
+completed pages and components:
+
+\begin{table}[H]
+  \centering
+  \caption{Component Implementation Status}
+  \small
+  \begin{tabularx}{\linewidth}{@{} c l l c X @{}}
+    \toprule
+    \textbf{\#} & \textbf{Component} & \textbf{File} & \textbf{Status} & \textbf{Description} \\
+    \midrule
+    1 & Landing Page       & \texttt{QuizzLanding.jsx}     & \yes Complete & Hero section, feature cards, navbar, footer \\
+    2 & Authentication     & \texttt{AuthPage.jsx}         & \yes Complete & Role toggle, sign-up form, animated background \\
+    3 & Student Dashboard  & \texttt{StudentDashboard.jsx} & \yes Complete & Welcome banner, XP \& Rank, badges, quiz grid \\
+    4 & Teacher Dashboard  & \texttt{TeacherDashboard.jsx} & \yes Complete & Stats banner, subject badges, quiz submissions \\
+    5 & Quiz Arena         & \texttt{QuizArena.jsx}        & \yes Complete & 20 questions, timer, mark-for-review, calculator \\
+    6 & Feature Card       & \texttt{FeatureCard.jsx}      & \yes Complete & Reusable landing page card component \\
+    7 & Backend Server     & \texttt{backend/index.js}     & \no Scaffold  & Node.js initialised; implementation pending \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% -----------------------------------------------------------------------------
+\subsection{Key Implementation Highlights}
+
+\subsubsection{Quiz Arena --- Full Interactive Quiz-Taking Experience}
+
+The Quiz Arena is the most feature-rich component --- the dedicated area where
+students take their quizzes. Key features include:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Countdown Timer:} Real-time countdown from 9:35, with urgent
+        styling when under 60 seconds remain.
+  \item \textbf{Question Navigation:} Previous/Next buttons, question status
+        grid for jumping to any question.
+  \item \textbf{Mark for Review:} Students can flag questions to revisit, with
+        a visual star indicator.
+  \item \textbf{Colour-Coded Status Panel:} \textcolor{accent}{Green} =
+        Answered, \textcolor{orange}{Yellow} = Marked for Review,
+        \textcolor{gray}{Grey} = Not Visited.
+  \item \textbf{Built-in Calculator:} Fully functional calculator for
+        math-related quizzes, with basic arithmetic, clear, and backspace.
+\end{itemize}
+
+\subsubsection{Dual-Role Authentication}
+
+The Auth page features:
+\begin{itemize}[leftmargin=1.5em]
+  \item Student/Teacher role toggle --- determines which dashboard the user
+        sees after login.
+  \item Animated binary-rain background for visual appeal.
+  \item Form validation with name, email, and password fields.
+\end{itemize}
+
+\subsubsection{Dashboard Personalisation}
+
+Both dashboards include:
+\begin{itemize}[leftmargin=1.5em]
+  \item Personalised welcome messages.
+  \item Key stats at a glance (XP, Rank for students; Quiz count for teachers).
+  \item Lightweight engagement: XP counter and achievement badges for students;
+        subject badges for teachers.
+  \item Recent quiz activity with relevant metadata.
+\end{itemize}
+
+\subsubsection{Component Architecture}
+
+\begin{lstlisting}
+frontend/src/
++-- components/
+|   +-- AuthPage.jsx          (127 lines)
+|   +-- FeatureCard.jsx       (reusable card)
+|   +-- QuizArena.jsx         (221 lines -- largest component)
+|   +-- QuizzLanding.jsx      (88 lines)
+|   +-- StudentDashboard.jsx  (106 lines)
+|   `-- TeacherDashboard.jsx  (118 lines)
++-- styles/
+|   +-- AuthPage.css          (4.8 KB)
+|   +-- FeatureCard.css       (0.8 KB)
+|   +-- LandingPage.css       (0.7 KB)
+|   +-- QuizArena.css         (7.6 KB -- most detailed)
+|   +-- QuizzLanding.css      (3.1 KB)
+|   +-- StudentDashboard.css  (7.2 KB)
+|   `-- TeacherDashboard.css  (7.8 KB)
++-- App.jsx                   (main router)
++-- main.jsx                  (React entry point)
++-- index.css                 (global styles)
+`-- App.css                   (app-level overrides)
+\end{lstlisting}
+
+% =============================================================================
+\section{Future Work and Teamwork}
+% =============================================================================
+
+\subsection{Remaining Work and Next Steps}
+
+\begin{longtable}{@{} c p{4.5cm} l p{4cm} @{}}
+  \toprule
+  \textbf{\#} & \textbf{Task} & \textbf{Priority} & \textbf{Scope} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{\#} & \textbf{Task} & \textbf{Priority} & \textbf{Scope} \\
+  \midrule
+  \endhead
+  1 & Backend API --- Express.js REST API with JWT auth, quiz CRUD, classroom management & Critical & Backend \\
+  2 & Database integration --- MongoDB schemas for Users, Quizzes, Classrooms, Scores & Critical & Backend \\
+  3 & Unauthorised student detection --- Roster matching, approval queue, auto-expiring codes & High & Full Stack \\
+  4 & Anti-cheat module --- Tab-switch detection, copy/paste blocking, timer enforcement & High & Frontend \\
+  5 & AI-powered question generation --- Targeting each student's weak topics via AI APIs & High & Backend (API integration) \\
+  6 & Student performance metrics --- Analytics, concept-wise tracking, strengths/weaknesses & Medium & Full Stack \\
+  7 & Question tags --- Categorise by topic and difficulty for filtering and targeted practice & Medium & Full Stack \\
+  8 & Mistake Book --- Personal error log for students to review wrong answers & Medium & Full Stack \\
+  9 & Coin/XP mechanism --- Engagement system with XP earned from quiz participation & Low & Full Stack \\
+  10 & Deployment --- Vercel/Netlify (frontend), Render (backend), MongoDB Atlas (DB) & Final & DevOps \\
+  \bottomrule
+  \caption{Task Backlog for Remaining Implementation}
+\end{longtable}
+
+% -----------------------------------------------------------------------------
+\subsection{Integration Components}
+
+\begin{table}[H]
+  \centering
+  \caption{Key Integration Components}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l X @{}}
+    \toprule
+    \textbf{Component} & \textbf{Integration Details} \\
+    \midrule
+    Authentication         & JWT-based auth connecting frontend AuthPage to backend API \\
+    Quiz Data Pipeline     & Quiz creation $\to$ DB storage $\to$ Quiz Arena rendering $\to$ Score submission \\
+    Classroom Enrolment    & Join-code generation $\to$ Student request $\to$ Teacher approval $\to$ Roster sync \\
+    AI Question Generation & Student performance data $\to$ AI API call $\to$ Personalised questions $\to$ Review centre \\
+    Real-time Features     & WebSocket integration for live quiz sessions (potential) \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% -----------------------------------------------------------------------------
+\subsection{Team Contribution}
+
+The team of 6 members is divided into two focused groups:
+
+\begin{table}[H]
+  \centering
+  \caption{Team Roles and Responsibilities}
+  \small
+  \begin{tabularx}{\linewidth}{@{} l l X @{}}
+    \toprule
+    \textbf{Role} & \textbf{Members} & \textbf{Responsibilities} \\
+    \midrule
+    Research + Documentation & Dev, Mudit, Payal & Platform research, competitor analysis, feature specification, documentation, UI/UX design decisions, deployment planning \\
+    Development              & Bhavya, Ayush, Rohan & Frontend component development, CSS styling, backend API development, database schema design, integration \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\begin{infobox}
+  All members participated in ideation discussions, feature prioritization, and
+  code reviews.
+\end{infobox}
+
+% =============================================================================
+\section{Additional Information}
+% =============================================================================
+
+\subsection{Key Differentiators from Existing Platforms}
+
+\begin{table}[H]
+  \centering
+  \caption{Feature Comparison: QuizPod vs.\ Competitors}
+  \small
+  \begin{tabularx}{\linewidth}{@{} X c c c c @{}}
+    \toprule
+    \textbf{Feature} & \textbf{Kahoot} & \textbf{Quizlet} & \textbf{Google Forms} & \textbf{QuizPod} \\
+    \midrule
+    Teacher approval for enrolment  & \no & \no & \no & \yes \\
+    Roster-based access control     & \no & \no & \no & \yes \\
+    Auto-expiring join codes        & \no & \no & \no & \yes \\
+    In-quiz calculator              & \no & \no & \no & \yes \\
+    Role-based dashboards           & \no & \no & \no & \yes \\
+    XP \& Badges                   & \yes (speed) & \no & \no & \yes (mastery) \\
+    Free tier limitations           & 10 players & Paywalled & Basic only & \textbf{No paywall} \\
+    Anti-cheat (tab detection)      & \no & \no & \no & \yes (planned) \\
+    AI-generated questions          & \no & \no & \no & \yes (planned) \\
+    Mistake Book                    & \no & \no & \no & \yes (planned) \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% -----------------------------------------------------------------------------
+\subsection{Project Repository}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{GitHub:} \href{https://github.com/DevAggarwal03/WebTech_Project}{\texttt{DevAggarwal03/WebTech\_Project}}
+  \item \textbf{Structure:} Monorepo with \texttt{/frontend} (React + Vite) and \texttt{/backend} (Node.js)
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\subsection{References}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Kahoot --- \url{https://kahoot.com}
+  \item Quizlet --- \url{https://quizlet.com}
+  \item Google Forms --- \url{https://forms.google.com}
+  \item Mentimeter --- \url{https://www.mentimeter.com}
+  \item Socrative --- \url{https://www.socrative.com}
+  \item Typeform --- \url{https://www.typeform.com}
+  \item Google Classroom --- \url{https://classroom.google.com}
+  \item Moodle LMS --- \url{https://moodle.org}
+  \item Canvas LMS --- \url{https://www.instructure.com/canvas}
+  \item Edmodo (discontinued 2022) --- \url{https://en.wikipedia.org/wiki/Edmodo}
+  \item FlexiQuiz --- \url{https://www.flexiquiz.com}
+  \item ClassMarker --- \url{https://www.classmarker.com}
+  \item ProProfs Quiz Maker --- \url{https://www.proprofs.com/quiz-school}
+\end{enumerate}
+
+\vspace{1.5cm}
+\noindent\rule{\linewidth}{0.4pt}\\[0.3em]
+
+% ─────────────────────────────────────────────────────────────────────────────
+\end{document}
+% ─────────────────────────────────────────────────────────────────────────────

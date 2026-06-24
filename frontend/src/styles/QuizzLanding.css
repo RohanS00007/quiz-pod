@@ -1,0 +1,205 @@
+/* ===== Page Wrapper ===== */
+.qz-landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #111118;
+  color: #ffffff;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== Navbar ===== */
+.qz-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  background-color: #111118;
+}
+
+.qz-nav__logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.qz-nav__login {
+  background-color: #c0622a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.qz-nav__login:hover {
+  background-color: #a85222;
+  transform: translateY(-1px);
+}
+
+/* ===== Hero Section ===== */
+.qz-hero {
+  flex: 1;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.qz-hero__text {
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qz-hero__title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.qz-hero__title-highlight {
+  color: #c0622a;
+  display: block;
+}
+
+.qz-hero__sub {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  color: #dddddd;
+  margin: 0 0 16px 0;
+}
+
+.qz-hero__body {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  color: #bbbbbb;
+  line-height: 1.6;
+  margin: 0 0 36px 0;
+  max-width: 650px;
+}
+
+/* ===== CTA Buttons ===== */
+.qz-hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.qz-btn {
+  background-color: #c0622a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 36px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.qz-btn:hover {
+  background-color: #a85222;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 98, 42, 0.4);
+}
+
+.qz-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== Feature Cards Row ===== */
+.qz-features {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* ===== Footer ===== */
+.qz-footer {
+  background-color: #0d0d14;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #222230;
+}
+
+.qz-footer__copy {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.qz-footer__icons {
+  display: flex;
+  gap: 12px;
+}
+
+.qz-footer__icon {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  display: inline-block;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.qz-footer__icon:hover {
+  border-color: #c0622a;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .qz-hero {
+    padding: 40px 24px;
+    gap: 40px;
+  }
+
+  .qz-nav {
+    padding: 0 24px;
+  }
+
+  .qz-features {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .qz-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .qz-hero__actions {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .qz-nav__login {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+
+  .qz-nav__logo {
+    font-size: 1.25rem;
+  }
+}

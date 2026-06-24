@@ -1,0 +1,559 @@
+/* ===== Page ===== */
+.qa-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== Navbar ===== */
+.qa-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e4ea;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.qa-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.qa-nav__check {
+  background-color: #3a82f6;
+  color: #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.qa-nav__quiz  { color: #1a1a2e; }
+.qa-nav__arena { color: #3a82f6; }
+
+.qa-nav__section {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.qa-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.qa-nav__theme {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.qa-nav__theme:hover { color: #f0a030; }
+
+.qa-nav__timer {
+  background-color: #c0622a;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  transition: background-color 0.3s;
+}
+
+.qa-nav__timer--urgent {
+  background-color: #c0392b;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* ===== Body Layout ===== */
+.qa-body {
+  display: flex;
+  gap: 24px;
+  padding: 24px 28px;
+  flex: 1;
+  align-items: flex-start;
+}
+
+/* ===== Question Panel ===== */
+.qa-question-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.qa-question-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  min-height: 420px;
+}
+
+.qa-question__text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 28px 0;
+  line-height: 1.5;
+}
+
+/* ===== Options ===== */
+.qa-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qa-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.qa-option__radio {
+  display: none;
+}
+
+.qa-option__circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #bbb;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background-color 0.2s;
+  position: relative;
+}
+
+.qa-option--selected .qa-option__circle {
+  border-color: #3a82f6;
+  background-color: #3a82f6;
+}
+
+.qa-option--selected .qa-option__circle::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.qa-option__text {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.qa-option--selected .qa-option__text {
+  color: #3a82f6;
+  font-weight: 600;
+}
+
+.qa-option:hover .qa-option__circle {
+  border-color: #3a82f6;
+}
+
+/* ===== Navigation Buttons ===== */
+.qa-nav-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.qa-action-btn {
+  flex: 1;
+  min-width: 130px;
+  padding: 14px 10px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1.5px solid #ccc;
+  background: #ffffff;
+  color: #333;
+  transition: background-color 0.2s, color 0.2s, transform 0.15s, border-color 0.2s;
+}
+
+.qa-action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.qa-action-btn:not(:disabled):hover {
+  background-color: #f0f4ff;
+  border-color: #3a82f6;
+  color: #3a82f6;
+  transform: translateY(-1px);
+}
+
+.qa-action-btn--next {
+  background-color: #3a82f6;
+  color: #ffffff;
+  border-color: #3a82f6;
+}
+
+.qa-action-btn--next:not(:disabled):hover {
+  background-color: #2567d4;
+  color: #ffffff;
+  border-color: #2567d4;
+}
+
+/* ===== Status Panel ===== */
+.qa-status-panel {
+  width: 280px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.qa-status__heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 14px 0;
+}
+
+.qa-status__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 0.78rem;
+  color: #555;
+  margin-bottom: 18px;
+  align-items: center;
+}
+
+.qa-legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 3px;
+}
+
+.qa-legend-dot--review    { background-color: #3a82f6; }
+.qa-legend-dot--answered  { background-color: #22a84a; }
+.qa-legend-dot--not-visited { background-color: #e03a2f; }
+
+/* ===== Status Grid ===== */
+.qa-status__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.qa-status__btn {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  color: #ffffff;
+}
+
+.qa-status__btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.qa-status__btn--answered   { background-color: #22a84a; }
+.qa-status__btn--review      { background-color: #3a82f6; }
+.qa-status__btn--not-visited { background-color: #e03a2f; }
+
+.qa-status__btn--current {
+  outline: 3px solid #1a1a2e;
+  outline-offset: 2px;
+}
+
+/* ===== Calculator Toggle ===== */
+.qa-calc-toggle {
+  width: 100%;
+  padding: 10px;
+  background: #f4f6fa;
+  border: 1.5px solid #dde2ea;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #333;
+  font-family: inherit;
+  transition: background-color 0.2s, border-color 0.2s;
+  margin-bottom: 12px;
+}
+
+.qa-calc-toggle:hover {
+  background-color: #e8edf8;
+  border-color: #3a82f6;
+  color: #3a82f6;
+}
+
+/* ===== Calculator ===== */
+.calc {
+  background: #e8ecf0;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.calc__display {
+  background: #d8dce2;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+  min-height: 36px;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+}
+
+.calc__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.calc__key--clear {
+  grid-column: span 4;
+  background-color: #c0622a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.2s;
+}
+
+.calc__key--clear:hover { background-color: #a85222; }
+
+.calc__key {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  color: #1a1a2e;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.calc__key:hover {
+  background-color: #e0e4ea;
+  transform: scale(1.05);
+}
+
+.calc__key--eq {
+  background-color: #c0622a;
+  color: #ffffff;
+}
+
+.calc__key--eq:hover { background-color: #a85222; }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .qa-body {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .qa-status-panel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .qa-nav {
+    padding: 0 14px;
+  }
+
+  .qa-nav__section {
+    display: none;
+  }
+
+  .qa-question-card {
+    padding: 20px 16px;
+  }
+
+  .qa-nav-actions {
+    flex-direction: column;
+  }
+
+  .qa-status__grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ===== SECURITY STYLES ===== */
+
+/* Screenshot prevention - hides content in print/screenshot mode */
+.sec-protected {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media print {
+  .sec-protected {
+    display: none !important;
+  }
+  body::after {
+    content: 'Screenshots and printing are not allowed during the test.';
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+    margin-top: 40vh;
+  }
+}
+
+/* Fullscreen + Warning overlay */
+.sec-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(6px);
+}
+
+.sec-modal {
+  background: #1a1a2e;
+  border: 1px solid #ff4d4d55;
+  border-radius: 16px;
+  padding: 40px 48px;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255, 77, 77, 0.2);
+  animation: sec-pop 0.3s ease;
+}
+
+@keyframes sec-pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.sec-modal__icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.sec-modal__title {
+  color: #ff6b6b;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.sec-modal__reason {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.sec-modal__note {
+  color: #ff9f43;
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+}
+
+.sec-modal__final {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.sec-modal__btn {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.sec-modal__btn:hover { opacity: 0.85; }
+
+/* Violation badge */
+.sec-badge {
+  position: fixed;
+  top: 68px;
+  right: 16px;
+  background: #ff4d4d;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  z-index: 500;
+  box-shadow: 0 2px 10px rgba(255,77,77,0.4);
+  animation: sec-pulse 2s infinite;
+}
+
+@keyframes sec-pulse {
+  0%, 100% { box-shadow: 0 2px 10px rgba(255,77,77,0.4); }
+  50%       { box-shadow: 0 2px 20px rgba(255,77,77,0.8); }
+}
+
+/* ===== BLACKOUT OVERLAY ===== */
+.sec-blackout {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sec-blackout__msg {
+  color: #444;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}

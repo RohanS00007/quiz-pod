@@ -1,0 +1,237 @@
+/* ── Page & Container ─────────────────────────────────────────────── */
+.mb-page {
+  min-height: 100vh;
+  background: #0f0f1a;
+  color: #e2e8f0;
+  padding: 32px 24px;
+}
+
+.mb-page--contained {
+  min-height: auto;
+  background: transparent;
+  padding: 0;
+}
+
+.mb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Header ───────────────────────────────────────────────────────── */
+.mb-header {
+  margin-bottom: 28px;
+}
+
+.mb-header__title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #e2e8f0;
+}
+
+.mb-header__sub {
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ── Quiz Selector ────────────────────────────────────────────────── */
+.mb-selector {
+  margin-bottom: 28px;
+}
+
+.mb-selector__label {
+  display: block;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.mb-selector__buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mb-selector__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  min-width: 130px;
+  text-align: left;
+}
+
+.mb-selector__btn:hover {
+  border-color: #a78bfa;
+}
+
+.mb-selector__btn--active {
+  border-color: #a78bfa;
+  background: rgba(167, 139, 250, 0.12);
+}
+
+.mb-selector__subject {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a78bfa;
+  letter-spacing: 0.05em;
+}
+
+.mb-selector__qtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.mb-selector__date {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* ── Stats Row ────────────────────────────────────────────────────── */
+.mb-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.mb-stat {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 12px;
+  padding: 16px 24px;
+  flex: 1;
+  text-align: center;
+}
+
+.mb-stat__value {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.mb-stat__value--purple { color: #a78bfa; }
+.mb-stat__value--red    { color: #f87171; }
+.mb-stat__value--green  { color: #34d399; }
+
+.mb-stat__label {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ── Mistake Card ─────────────────────────────────────────────────── */
+.mb-card {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+.mb-card__question {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+/* ── Answer Boxes ─────────────────────────────────────────────────── */
+.mb-card__answers {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.mb-answer {
+  flex: 1;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.mb-answer--wrong {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.mb-answer--correct {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.mb-answer__label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.mb-answer--wrong   .mb-answer__label { color: #f87171; }
+.mb-answer--correct .mb-answer__label { color: #34d399; }
+
+.mb-answer__value {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.mb-answer--wrong   .mb-answer__value { color: #f87171; }
+.mb-answer--correct .mb-answer__value { color: #34d399; }
+
+/* ── Toggle Button ────────────────────────────────────────────────── */
+.mb-card__toggle {
+  background: transparent;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 13px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.mb-card__toggle:hover {
+  border-color: #a78bfa;
+  color: #a78bfa;
+}
+
+/* ── Options List ─────────────────────────────────────────────────── */
+.mb-options {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.mb-option {
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.mb-option--correct {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
+.mb-option--wrong {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+/* ── Empty State ──────────────────────────────────────────────────── */
+.mb-empty {
+  text-align: center;
+  color: #34d399;
+  font-size: 18px;
+  margin-top: 48px;
+}

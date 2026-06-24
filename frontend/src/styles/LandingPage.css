@@ -1,0 +1,37 @@
+/* ===== Global Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* FIX: html + body must be 100% so vh units work correctly and
+   no white gaps appear at edges or bottom of the page */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a2e;
+}
+
+/* FIX: Make React root div fill full height too */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Landing Page Wrapper ===== */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.landing-page main {
+  flex: 1;
+}
